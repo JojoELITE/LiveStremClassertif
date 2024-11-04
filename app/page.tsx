@@ -4,7 +4,7 @@ export default function Home() {
   return (
    <div className="flex justify-center ">
 
-      <h1 className="underline">
+      <h1 className="underline ">
         Bienvenue au Meet
       </h1>
 
