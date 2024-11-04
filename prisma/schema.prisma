@@ -9,6 +9,19 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+model Live {
+  id      Int      @id @default(autoincrement())
+  title   String
+  host    String
+  viewers Viewer[] @relation("LiveViewers") // Relation avec les spectateurs
+}
+
+model Viewer {
+  id      Int    @id @default(autoincrement())
+  name    String
+  liveId  Int    // Foreign key pour le live
+  live    Live   @relation("LiveViewers", fields: [liveId], references: [id]) // Relation vers Live
 }
