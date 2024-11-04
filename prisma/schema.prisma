@@ -1,14 +1,13 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-generator client {
-  provider = "prisma-client-js"
+model Room {
+  id          Int          @id @default(autoincrement())
+  creatorName String
+  roomName    String
+  participants Participant[] // Establishing a one-to-many relationship
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+model Participant {
+  id      Int    @id @default(autoincrement())
+  name    String
+  roomId  Int    // Foreign key to Room
+  room    Room   @relation(fields: [roomId], references: [id]) // Relation to Room
 }

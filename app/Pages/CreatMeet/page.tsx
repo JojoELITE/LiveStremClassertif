@@ -1,13 +1,10 @@
-import React from 'react'
-
-
-function Page() {
-
-    return (
-        <div>
-            Page
-        </div>
-    )
-}
-
-export default Page
+ import React from 'react'
+ 
+ export default function page() {
+   return (
+     <div>
+       
+     </div>
+   )
+ }
+ 
